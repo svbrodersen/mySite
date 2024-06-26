@@ -1,4 +1,4 @@
 run:
 	@templ generate
-	@go run main.go
+	@go run cmd/main.go
 
