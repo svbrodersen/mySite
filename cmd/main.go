@@ -8,7 +8,7 @@ import (
 
 func main() {
 	mux := http.NewServeMux()
-	mux.HandleFunc("/", handlers.IndexHandler)
+	mux.HandleFunc("/", handlers.AboutHandler)
 	fmt.Println("Listening on :3333")
 	err := http.ListenAndServe(":3333", mux)
 	if err != nil {

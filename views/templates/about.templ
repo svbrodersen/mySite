@@ -1,0 +1,15 @@
+package templates
+
+templ AboutMe(patch bool) {
+if patch {
+<p>
+	About Me
+</p>
+} else {
+@baseLayout() {
+<p>
+	About me
+</p>
+}
+}
+}

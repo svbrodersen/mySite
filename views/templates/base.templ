@@ -1,0 +1,41 @@
+package templates
+
+templ baseLayout() {
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<title>Personal Portfolio</title>
+	<script src="https://unpkg.com/htmx.org@2.0.0/dist/htmx.js"
+		integrity="sha384-Xh+GLLi0SMFPwtHQjT72aPG19QvKB8grnyRbYBNIdHWc2NkCrz65jlU7YrzO6qRp"
+		crossorigin="anonymous"></script>
+</head>
+
+<body>
+	<header>
+		<nav>
+			<ul>
+				<li>
+					<a hx-patch="/about" hx-trigger="click" hx-target="#contents">
+						About
+						Me
+					</a>
+				</li>
+				<li>
+					<a hx-patch="/project" hx-trigger="click" hx-target="#contents">Projects</a>
+				</li>
+				<li>
+					<a hx-patch="/contact" hx-trigger="click" hx-target="#contents">Contact</a>
+				</li>
+			</ul>
+		</nav>
+	</header>
+	<div id="contents">
+		{ children... }
+	</div>
+</body>
+
+</html>
+}
