@@ -23,7 +23,7 @@ func ContactMain() templ.Component {
 			templ_7745c5c3_Var1 = templ.NopComponent
 		}
 		ctx = templ.ClearChildren(ctx)
-		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("<h1>Contact</h1>")
+		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("<h1>Contact</h1><form hx-post=\"/contact\" hx-swap=\"outerHTML\"><input name=\"Subject\" type=\"text\"> <input name=\"Body\" type=\"text\"> <input name=\"Name\" type=\"text\"> <button hx-indicator=\"#indicator\" type=\"submit\">Submit</button> <img id=\"indicator\" height=\"24px\" class=\"htmx-indicator\" src=\"/static/img/SVG-Loaders-master/svg-loaders/spinning-circles.svg\"></form>")
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}

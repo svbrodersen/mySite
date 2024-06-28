@@ -104,3 +104,19 @@ p {
 .primary-content a {
     color: var(--highlight-color)
 }
+
+.htmx-indicator {
+    display: none;
+}
+
+.htmx-request .htmx-indicator {
+    display: inline;
+}
+
+.htmx-request.htmx-indicator {
+    display: inline;
+}
+
+.htmx-request button {
+    display: none;
+}
