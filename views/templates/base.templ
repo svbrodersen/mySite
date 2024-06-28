@@ -15,16 +15,16 @@ templ BaseLayout() {
 				<nav class="primary-nav">
 					<ul>
 						<li>
-							<a href="/about">
+							<a hx-replace-url="true" hx-patch="/about" hx-trigger="click" hx-target="#contents">
 								About
 								Me
 							</a>
 						</li>
 						<li>
-							<a href="/projects">Projects</a>
+							<a hx-replace-url="true" hx-patch="/projects" hx-trigger="click" hx-target="#contents">Projects</a>
 						</li>
 						<li>
-							<a href="/contact">Contact</a>
+							<a hx-patch="/contact" hx-replace-url="true" hx-trigger="click" hx-target="#contents">Contact</a>
 						</li>
 					</ul>
 				</nav>

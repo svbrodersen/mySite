@@ -1,15 +1,15 @@
 package templates
 
+templ ContactMain() {
+	<h1>Contact</h1>
+}
+
 templ Contact(patch bool) {
 	if patch {
-		<p>
-			Contact
-		</p>
+		@ContactMain()
 	} else {
 		@BaseLayout() {
-			<p>
-				Contact
-			</p>
+			@ContactMain()
 		}
 	}
 }
