@@ -1,0 +1,15 @@
+package templates
+
+templ Contact(patch bool) {
+	if patch {
+		<p>
+			Contact
+		</p>
+	} else {
+		@BaseLayout() {
+			<p>
+				Contact
+			</p>
+		}
+	}
+}

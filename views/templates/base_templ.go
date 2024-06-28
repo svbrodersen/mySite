@@ -10,7 +10,7 @@ import "context"
 import "io"
 import "bytes"
 
-func baseLayout() templ.Component {
+func BaseLayout() templ.Component {
 	return templ.ComponentFunc(func(ctx context.Context, templ_7745c5c3_W io.Writer) (templ_7745c5c3_Err error) {
 		templ_7745c5c3_Buffer, templ_7745c5c3_IsBuffer := templ_7745c5c3_W.(*bytes.Buffer)
 		if !templ_7745c5c3_IsBuffer {
@@ -23,7 +23,7 @@ func baseLayout() templ.Component {
 			templ_7745c5c3_Var1 = templ.NopComponent
 		}
 		ctx = templ.ClearChildren(ctx)
-		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("<!doctype html><html lang=\"en\"><head><meta charset=\"UTF-8\"><meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\"><title>Personal Portfolio</title><script src=\"https://unpkg.com/htmx.org@2.0.0/dist/htmx.js\" integrity=\"sha384-Xh+GLLi0SMFPwtHQjT72aPG19QvKB8grnyRbYBNIdHWc2NkCrz65jlU7YrzO6qRp\" crossorigin=\"anonymous\"></script></head><body><header><nav><ul><li><a hx-patch=\"/about\" hx-trigger=\"click\" hx-target=\"#contents\">About Me</a></li><li><a hx-patch=\"/project\" hx-trigger=\"click\" hx-target=\"#contents\">Projects</a></li><li><a hx-patch=\"/contact\" hx-trigger=\"click\" hx-target=\"#contents\">Contact</a></li></ul></nav></header><div id=\"contents\">")
+		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("<!doctype html><html lang=\"en\"><head><meta charset=\"UTF-8\"><meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\"><link rel=\"stylesheet\" href=\"/static/css/base.css\"><title>Personal Portfolio</title><script src=\"https://unpkg.com/htmx.org@2.0.0/dist/htmx.js\" integrity=\"sha384-Xh+GLLi0SMFPwtHQjT72aPG19QvKB8grnyRbYBNIdHWc2NkCrz65jlU7YrzO6qRp\" crossorigin=\"anonymous\"></script></head><body><header><nav class=\"primary-nav\"><ul><li><a href=\"/about\">About Me</a></li><li><a href=\"/projects\">Projects</a></li><li><a href=\"/contact\">Contact</a></li></ul></nav></header><div class=\"primary-content\" id=\"contents\">")
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
@@ -31,7 +31,7 @@ func baseLayout() templ.Component {
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
-		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("</div></body></html>")
+		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("</div><footer><ul><li><a href=\"https://www.linkedin.com/in/simon-vinding-brodersen/\"><img width=\"24\" height=\"24\" src=\"/static/img/LinkedIn-Logos/LI-In-Bug.png\" alt=\"LinkedIn SVG\"></a></li><li><a href=\"https://github.com/svbrodersen\"><img width=\"24\" height=\"24\" src=\"/static/img/github-mark/github-mark-white.png\" alt=\"Github SVG\"></a></li></ul></footer></body></html>")
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}

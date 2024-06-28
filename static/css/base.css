@@ -1,0 +1,106 @@
+:root {
+    --primary-color: #1E1E2E;
+    --secondary-color: #2D2D44;
+    --accent-color: #BB86FC;
+    --highlight-color: #03DAC5;
+    --background-color: #121212;
+    --surface-color: #1E1E1E;
+    --text-primary-color: #FFFFFF;
+    --text-secondary-color: #B0B0B0;
+}
+
+body,
+ul,
+li,
+a {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    text-decoration: none;
+    font-family: sans-serif;
+}
+
+body {
+    background-color: var(--background-color);
+    color: var(--text-primary-color);
+}
+
+header {
+    background-color: var(--surface-color);
+    padding: 10px 20px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+header a {
+    color: var(--text-primary-color);
+}
+
+footer {
+    bottom: 0;
+    position: fixed;
+    width: 100%;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+footer ul {
+    display: flex;
+    justify-content: center;
+    gap: 4px;
+}
+
+.primary-nav {
+    display: flex;
+    justify-content: center;
+    cursor: default;
+    gap: 20px;
+}
+
+.primary-nav ul {
+    display: flex;
+}
+
+.primary-nav li {
+    list-style: none;
+}
+
+.primary-nav a {
+    padding: 10px 15px;
+    border-radius: 5px;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.primary-nav a:hover {
+    background-color: var(--accent-color);
+}
+
+/* Styling for the contents div */
+.primary-content {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    background-color: var(--surface-color);
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+    margin: auto;
+    margin-top: 20px;
+    width: 40em;
+}
+
+.primary-content h1,
+p {
+    width: 100%;
+}
+
+.primary-content h1 {
+    text-align: center;
+}
+
+.primary-content p {
+    color: var(--text-secondary-color);
+    text-align: left;
+}
+
+.primary-content a {
+    color: var(--highlight-color)
+}

@@ -1,0 +1,18 @@
+package templates
+
+templ ProjectMain() {
+	<h1>Project</h1>
+	<ul>
+		<li>This is an element</li>
+	</ul>
+}
+
+templ Projects(patch bool) {
+	if patch {
+		@ProjectMain()
+	} else {
+		@BaseLayout() {
+			@ProjectMain()
+		}
+	}
+}
