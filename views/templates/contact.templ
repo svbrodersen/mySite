@@ -1,24 +1,25 @@
 package templates
 
 templ ContactMain() {
-	<h1>Contact</h1>
-	<form hx-post="/contact" hx-swap="outerHTML">
-		<input name="Subject" type="text"/>
-		<input name="Body" type="text"/>
-		<input name="Name" type="text"/>
-		<button hx-indicator="#indicator" type="submit">
-			Submit
-		</button>
-		<img id="indicator" height="24px" class="htmx-indicator" src="/static/img/SVG-Loaders-master/svg-loaders/rings.svg"/>
-	</form>
+<h1>Contact</h1>
+<form hx-post="/contact" hx-swap="outerHTML">
+	<input name="Name" type="text" />
+	<input name="Email" type="text" />
+	<input name="Subject" type="text" />
+	<input name="Body" type="text" />
+	<button hx-indicator="#indicator" type="submit">
+		Submit
+	</button>
+	<img id="indicator" height="24px" class="htmx-indicator" src="/static/img/SVG-Loaders-master/svg-loaders/rings.svg" />
+</form>
 }
 
 templ Contact(patch bool) {
-	if patch {
-		@ContactMain()
-	} else {
-		@BaseLayout() {
-			@ContactMain()
-		}
-	}
+if patch {
+@ContactMain()
+} else {
+@BaseLayout() {
+@ContactMain()
+}
+}
 }
