@@ -1,3 +1,14 @@
+:root {
+    --primary-color: #1E1E2E;
+    --secondary-color: #2D2D44;
+    --accent-color: #BB86FC;
+    --highlight-color: #4CAF50;
+    --background-color: #121212;
+    --surface-color: #1E1E1E;
+    --text-primary-color: #FFFFFF;
+    --text-secondary-color: #B0B0B0;
+}
+
 /* Style inputs with type="text", select elements and textareas */
 input[type=text],
 select,
@@ -27,7 +38,7 @@ textarea {
 
 /* Style the submit button with a specific background color etc */
 button[type=submit] {
-    background-color: #04AA6D;
+    background-color: var(--highlight-color);
     color: white;
     padding: 12px 20px;
     border: none;
@@ -36,8 +47,8 @@ button[type=submit] {
 }
 
 /* When moving the mouse over the submit button, add a darker green color */
-input[type=submit]:hover {
-    background-color: #45a049;
+button[type=submit]:hover {
+    background-color: var(--accent-color);
 }
 
 #contact-container {

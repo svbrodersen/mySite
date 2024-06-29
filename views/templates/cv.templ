@@ -1,0 +1,16 @@
+package templates
+
+templ CvMain() {
+	<h1>My CV</h1>
+	<embed src="/static/cv.pdf" width="100%" height="650px"/>
+}
+
+templ Cv(patch bool) {
+	if patch {
+		@CvMain()
+	} else {
+		@BaseLayout() {
+			@CvMain()
+		}
+	}
+}
