@@ -1,17 +1,12 @@
 package templates
 
+import (
+"github.com/svbrodersen/mySite/views/components"
+)
+
 templ ContactMain() {
 <h1>Contact</h1>
-<form hx-post="/contact" hx-swap="outerHTML">
-	<input name="Name" type="text" />
-	<input name="Email" type="text" />
-	<input name="Subject" type="text" />
-	<input name="Body" type="text" />
-	<button hx-indicator="#indicator" type="submit">
-		Submit
-	</button>
-	<img id="indicator" height="24px" class="htmx-indicator" src="/static/img/SVG-Loaders-master/svg-loaders/rings.svg" />
-</form>
+@components.ContactForm(false)
 }
 
 templ Contact(patch bool) {

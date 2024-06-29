@@ -10,6 +10,10 @@ import "context"
 import "io"
 import "bytes"
 
+import (
+	"github.com/svbrodersen/mySite/views/components"
+)
+
 func ContactMain() templ.Component {
 	return templ.ComponentFunc(func(ctx context.Context, templ_7745c5c3_W io.Writer) (templ_7745c5c3_Err error) {
 		templ_7745c5c3_Buffer, templ_7745c5c3_IsBuffer := templ_7745c5c3_W.(*bytes.Buffer)
@@ -23,7 +27,11 @@ func ContactMain() templ.Component {
 			templ_7745c5c3_Var1 = templ.NopComponent
 		}
 		ctx = templ.ClearChildren(ctx)
-		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("<h1>Contact</h1><form hx-post=\"/contact\" hx-swap=\"outerHTML\"><input name=\"Name\" type=\"text\"> <input name=\"Email\" type=\"text\"> <input name=\"Subject\" type=\"text\"> <input name=\"Body\" type=\"text\"> <button hx-indicator=\"#indicator\" type=\"submit\">Submit</button> <img id=\"indicator\" height=\"24px\" class=\"htmx-indicator\" src=\"/static/img/SVG-Loaders-master/svg-loaders/rings.svg\"></form>")
+		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("<h1>Contact</h1>")
+		if templ_7745c5c3_Err != nil {
+			return templ_7745c5c3_Err
+		}
+		templ_7745c5c3_Err = components.ContactForm(false).Render(ctx, templ_7745c5c3_Buffer)
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}

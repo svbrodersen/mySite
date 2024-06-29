@@ -84,6 +84,7 @@ footer ul {
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
     margin: auto;
     margin-top: 20px;
+    padding: 20px;
     width: 40em;
 }
 
@@ -92,13 +93,13 @@ p {
     width: 100%;
 }
 
-.primary-content h1 {
+.primary-content h1,
+p {
     text-align: center;
 }
 
 .primary-content p {
     color: var(--text-secondary-color);
-    text-align: left;
 }
 
 .primary-content a {

@@ -1,7 +1,6 @@
 package handlers
 
 import (
-	"encoding/json"
 	"fmt"
 	"net/http"
 	"net/smtp"
@@ -13,25 +12,25 @@ import (
 )
 
 type ContactForm struct {
-	Name    string `json:"Name" validate:"required"`
-	Email   string `json:"Email" validate:"required, email"`
+	Email   string `json:"Email" validate:"required,email"`
 	Subject string `json:"Subject" validate:"required"`
 	Body    string `json:"Body" validate:"required"`
 }
 
 func send_mail_to_self(form *ContactForm) error {
 	from := "simon@3450.dk"
-	password := os.Getenv("EMAIL_PASSWORD")
-
+	password := string(os.Getenv("EMAIL_PASSWORD"))
 	to := []string{from}
 
-	smtpHost := "smtp.gmail.com"
-	smtpPort := "587"
+	message := []byte(fmt.Sprintf(
+		"To: simon@3450.dk\r\n"+
+			"From: %s\r\n"+
+			"Subject: %s\r\n"+
+			"%s\r\n", form.Email, form.Subject, form.Body,
+	))
+	auth := smtp.PlainAuth("", from, password, "smtp.gmail.com")
 
-	message := []byte("This is a test email")
-	auth := smtp.PlainAuth("", from, password, smtpHost)
-
-	err := smtp.SendMail(fmt.Sprintf("%s:%s", smtpHost, smtpPort), auth, from, to, message)
+	err := smtp.SendMail("smtp.gmail.com:587", auth, from, to, message)
 	return err
 }
 
@@ -41,23 +40,25 @@ func ContactHandler(w http.ResponseWriter, r *http.Request) {
 	} else if r.Method == "GET" {
 		templates.Contact(false).Render(r.Context(), w)
 	} else if r.Method == "POST" {
-		var contact_form ContactForm
-		err := json.NewDecoder(r.Body).Decode(&contact_form)
-		if err != nil {
-			http.Error(w, "Invalid input", http.StatusBadRequest)
-			return
+		contact_form := ContactForm{
+			Email:   r.FormValue("email"),
+			Subject: r.FormValue("subject"),
+			Body:    r.FormValue("body"),
 		}
+
 		validate := validator.New()
-		err = validate.Struct(contact_form)
+		err := validate.Struct(contact_form)
 		if err != nil {
-			errors := err.(validator.ValidationErrors)
-			http.Error(w, fmt.Sprintf("Validation error: %s", errors), http.StatusBadRequest)
+			fmt.Printf(err.Error())
+			components.ContactComponent(false).Render(r.Context(), w)
 			return
 		}
 		err = send_mail_to_self(&contact_form)
 		if err != nil {
-			http.Error(w, "Unable to send email to myself", http.StatusBadRequest)
+			fmt.Printf(err.Error())
+			components.ContactComponent(false).Render(r.Context(), w)
+			return
 		}
-		components.ContactSuccess().Render(r.Context(), w)
+		components.ContactComponent(true).Render(r.Context(), w)
 	}
 }
