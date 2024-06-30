@@ -1,0 +1,20 @@
+package templates
+
+import (
+	"github.com/svbrodersen/mySite/views/components"
+)
+
+templ Login(value string) {
+	if value == "fail" {
+		<p>
+			Login failed, please try again.
+		</p>
+		@components.LoginForm()
+	} else if value == "success" {
+		<p>
+			Login successful.
+		</p>
+	} else {
+		@components.LoginForm()
+	}
+}
