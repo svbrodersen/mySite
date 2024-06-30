@@ -1,21 +1,41 @@
 package templates
 
-templ ProjectMain(loggedIn bool) {
+import "github.com/svbrodersen/mySite/models"
+
+templ ProjectMain(loggedIn bool, projects []models.Project) {
 	<h1>Project</h1>
 	if loggedIn {
-		<button type="button">HIDDEN BUTTON</button>
+		<div class="project-form-container">
+			<form hx-post="/projects" hx-swap="innerHTML" hx-target="#contents" enctype="multipart/form-data" action="/projects">
+				<input type="file" name="file"/>
+				<input type="text" name="title"/>
+				<input type="text" name="description"/>
+				<input type="submit" value="upload"/>
+			</form>
+		</div>
 	}
-	<ul>
-		<li>This is an element</li>
-	</ul>
+	if projects != nil {
+		<ul>
+			for _, item := range projects {
+				<li>
+					<h3>{ item.Title }</h3>
+					<p>{ item.Description }</p>
+				</li>
+			}
+		</ul>
+	} else {
+		<p>
+			Not able to find any projects.
+		</p>
+	}
 }
 
-templ Projects(patch bool, loggedIn bool) {
+templ Projects(patch bool, loggedIn bool, projects []models.Project) {
 	if patch {
-		@ProjectMain(loggedIn)
+		@ProjectMain(loggedIn, projects)
 	} else {
 		@BaseLayout() {
-			@ProjectMain(loggedIn)
+			@ProjectMain(loggedIn, projects)
 		}
 	}
 }
