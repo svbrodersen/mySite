@@ -10,7 +10,7 @@ import "context"
 import "io"
 import "bytes"
 
-func LoginForm() templ.Component {
+func LoginForm(fail bool) templ.Component {
 	return templ.ComponentFunc(func(ctx context.Context, templ_7745c5c3_W io.Writer) (templ_7745c5c3_Err error) {
 		templ_7745c5c3_Buffer, templ_7745c5c3_IsBuffer := templ_7745c5c3_W.(*bytes.Buffer)
 		if !templ_7745c5c3_IsBuffer {
@@ -23,7 +23,17 @@ func LoginForm() templ.Component {
 			templ_7745c5c3_Var1 = templ.NopComponent
 		}
 		ctx = templ.ClearChildren(ctx)
-		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("<form class=\"login-form\" action=\"action_page.php\" method=\"post\"><div class=\"login-container\"><label for=\"uname\"><b>Username</b></label> <input type=\"text\" placeholder=\"Enter Username\" name=\"uname\" required> <label for=\"psw\"><b>Password</b></label> <input type=\"password\" placeholder=\"Enter Password\" name=\"psw\" required> <button type=\"submit\">Login</button></div><div class=\"login-container\" style=\"background-color:#f1f1f1\"><button type=\"button\" class=\"cancelbtn\">Cancel</button></div></form>")
+		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("<div class=\"form-container\" id=\"login-out-container\">")
+		if templ_7745c5c3_Err != nil {
+			return templ_7745c5c3_Err
+		}
+		if fail {
+			_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("<p>Login failed, please try again.</p>")
+			if templ_7745c5c3_Err != nil {
+				return templ_7745c5c3_Err
+			}
+		}
+		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("<form hx-post=\"/login\" hx-swap=\"outerHTML\" hx-target=\"#login-out-container\"><label for=\"uname\"><b>Username</b></label> <input type=\"text\" placeholder=\"Enter Username\" name=\"uname\" required> <label for=\"psw\"><b>Password</b></label> <input type=\"text\" placeholder=\"Enter Password\" name=\"psw\" required> <button type=\"submit\">Login</button></form></div>")
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}

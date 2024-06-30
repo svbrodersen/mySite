@@ -6,15 +6,14 @@ import (
 
 templ Login(value string) {
 	if value == "fail" {
-		<p>
-			Login failed, please try again.
-		</p>
-		@components.LoginForm()
+		@components.LoginForm(true)
 	} else if value == "success" {
 		<p>
 			Login successful.
 		</p>
 	} else {
-		@components.LoginForm()
+		@BaseLayout() {
+			@components.LoginForm(false)
+		}
 	}
 }

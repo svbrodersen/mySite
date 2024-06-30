@@ -1,18 +1,21 @@
 package templates
 
-templ ProjectMain() {
+templ ProjectMain(loggedIn bool) {
 	<h1>Project</h1>
+	if loggedIn {
+		<button type="button">HIDDEN BUTTON</button>
+	}
 	<ul>
 		<li>This is an element</li>
 	</ul>
 }
 
-templ Projects(patch bool) {
+templ Projects(patch bool, loggedIn bool) {
 	if patch {
-		@ProjectMain()
+		@ProjectMain(loggedIn)
 	} else {
 		@BaseLayout() {
-			@ProjectMain()
+			@ProjectMain(loggedIn)
 		}
 	}
 }

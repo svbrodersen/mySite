@@ -10,7 +10,7 @@ import "context"
 import "io"
 import "bytes"
 
-func ProjectMain() templ.Component {
+func ProjectMain(loggedIn bool) templ.Component {
 	return templ.ComponentFunc(func(ctx context.Context, templ_7745c5c3_W io.Writer) (templ_7745c5c3_Err error) {
 		templ_7745c5c3_Buffer, templ_7745c5c3_IsBuffer := templ_7745c5c3_W.(*bytes.Buffer)
 		if !templ_7745c5c3_IsBuffer {
@@ -23,7 +23,17 @@ func ProjectMain() templ.Component {
 			templ_7745c5c3_Var1 = templ.NopComponent
 		}
 		ctx = templ.ClearChildren(ctx)
-		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("<h1>Project</h1><ul><li>This is an element</li></ul>")
+		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("<h1>Project</h1>")
+		if templ_7745c5c3_Err != nil {
+			return templ_7745c5c3_Err
+		}
+		if loggedIn {
+			_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("<button type=\"button\">HIDDEN BUTTON</button>")
+			if templ_7745c5c3_Err != nil {
+				return templ_7745c5c3_Err
+			}
+		}
+		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("<ul><li>This is an element</li></ul>")
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
@@ -34,7 +44,7 @@ func ProjectMain() templ.Component {
 	})
 }
 
-func Projects(patch bool) templ.Component {
+func Projects(patch bool, loggedIn bool) templ.Component {
 	return templ.ComponentFunc(func(ctx context.Context, templ_7745c5c3_W io.Writer) (templ_7745c5c3_Err error) {
 		templ_7745c5c3_Buffer, templ_7745c5c3_IsBuffer := templ_7745c5c3_W.(*bytes.Buffer)
 		if !templ_7745c5c3_IsBuffer {
@@ -48,7 +58,7 @@ func Projects(patch bool) templ.Component {
 		}
 		ctx = templ.ClearChildren(ctx)
 		if patch {
-			templ_7745c5c3_Err = ProjectMain().Render(ctx, templ_7745c5c3_Buffer)
+			templ_7745c5c3_Err = ProjectMain(loggedIn).Render(ctx, templ_7745c5c3_Buffer)
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
 			}
@@ -59,7 +69,7 @@ func Projects(patch bool) templ.Component {
 					templ_7745c5c3_Buffer = templ.GetBuffer()
 					defer templ.ReleaseBuffer(templ_7745c5c3_Buffer)
 				}
-				templ_7745c5c3_Err = ProjectMain().Render(ctx, templ_7745c5c3_Buffer)
+				templ_7745c5c3_Err = ProjectMain(loggedIn).Render(ctx, templ_7745c5c3_Buffer)
 				if templ_7745c5c3_Err != nil {
 					return templ_7745c5c3_Err
 				}

@@ -1,7 +1,6 @@
 package handlers
 
 import (
-	"encoding/json"
 	"net/http"
 	"os"
 
@@ -18,22 +17,18 @@ var admin_username string = os.Getenv("ADMIN_USERNAME")
 var admin_password string = os.Getenv("ADMIN_PASSWORD")
 
 func LoginPost(w http.ResponseWriter, r *http.Request) {
-	var user User
-	err := json.NewDecoder(r.Body).Decode(&user)
-	if err != nil {
-		w.WriteHeader(http.StatusBadRequest)
-		templates.Login("fail").Render(r.Context(), w)
-		return
+	user := User{
+		username: r.FormValue("uname"),
+		password: r.FormValue("psw"),
 	}
+
 	if (user.username != admin_username) || (user.password != admin_password) {
-		w.WriteHeader(http.StatusUnauthorized)
 		templates.Login("fail").Render(r.Context(), w)
 		return
 	}
 
 	tokenString, expiration_time, err := utils.AuthCreateToken(user.username)
 	if err != nil {
-		w.WriteHeader(http.StatusInternalServerError)
 		templates.Login("fail").Render(r.Context(), w)
 		return
 	}
