@@ -1,4 +1,34 @@
+:root {
+    --primary-color: #1E1E2E;
+    --secondary-color: #2D2D44;
+    --accent-color: #BB86FC;
+    --highlight-color: #4CAF50;
+    --background-color: #121212;
+    --surface-color: #1E1E1E;
+    --text-primary-color: #FFFFFF;
+    --text-secondary-color: #B0B0B0;
+}
+
 .project-form-container {
     width: 100%;
     padding-bottom: 40px;
+}
+
+.project-list {
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: left;
+}
+
+.project-list-container {
+    width: 46%;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+    margin: 2%;
+}
+
+.project-list-container h3,
+p {
+    text-align: center;
 }

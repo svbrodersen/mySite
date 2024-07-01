@@ -85,7 +85,8 @@ footer ul {
     margin: auto;
     margin-top: 20px;
     padding: 20px;
-    width: 40em;
+    width: 35vw;
+    max-height: 80vh;
 }
 
 .primary-content h1,
@@ -138,6 +139,7 @@ form {
 
 /* Style inputs with type="text", select elements and textareas */
 input[type=text],
+input[type=password],
 select,
 textarea {
     width: 100%;

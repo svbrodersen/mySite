@@ -1,61 +1,57 @@
 package templates
 
 templ BaseLayout() {
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-	<meta charset="UTF-8" />
-	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-	<link rel="stylesheet" href="/static/css/base.css" />
-	<link rel="stylesheet" href="/static/css/contact.css" />
-	<link rel="stylesheet" href="/static/css/project.css" />
-	<title>Personal Portfolio</title>
-	<script src="https://unpkg.com/htmx.org@2.0.0/dist/htmx.js"
-		integrity="sha384-Xh+GLLi0SMFPwtHQjT72aPG19QvKB8grnyRbYBNIdHWc2NkCrz65jlU7YrzO6qRp"
-		crossorigin="anonymous"></script>
-</head>
-
-<body>
-	<header>
-		<nav class="primary-nav">
-			<ul>
-				<li>
-					<a hx-replace-url="true" hx-patch="/about" hx-trigger="click" hx-target="#contents">
-						About
-						Me
-					</a>
-				</li>
-				<li>
-					<a hx-replace-url="true" hx-patch="/projects" hx-trigger="click" hx-target="#contents">Projects</a>
-				</li>
-				<li>
-					<a hx-patch="/cv" hx-replace-url="true" hx-trigger="click" hx-target="#contents">CV</a>
-				</li>
-				<li>
-					<a hx-patch="/contact" hx-replace-url="true" hx-trigger="click" hx-target="#contents">Contact</a>
-				</li>
-			</ul>
-		</nav>
-	</header>
-	<div class="primary-content" id="contents">
-		{ children... }
-	</div>
-	<footer>
-		<ul>
-			<li>
-				<a href="https://www.linkedin.com/in/simon-vinding-brodersen/">
-					<img width="24" height="24" src="/static/img/LinkedIn-Logos/LI-In-Bug.png" alt="LinkedIn SVG" />
-				</a>
-			</li>
-			<li>
-				<a href="https://github.com/svbrodersen">
-					<img width="24" height="24" src="/static/img/github-mark/github-mark-white.png" alt="Github SVG" />
-				</a>
-			</li>
-		</ul>
-	</footer>
-</body>
-
-</html>
+	<!DOCTYPE html>
+	<html lang="en">
+		<head>
+			<meta charset="UTF-8"/>
+			<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+			<link rel="stylesheet" href="/static/css/base.css"/>
+			<link rel="stylesheet" href="/static/css/contact.css"/>
+			<link rel="stylesheet" href="/static/css/project.css"/>
+			<link rel="stylesheet" href="/static/css/cv.css"/>
+			<title>Personal Portfolio</title>
+			<script src="https://unpkg.com/htmx.org@2.0.0/dist/htmx.js" integrity="sha384-Xh+GLLi0SMFPwtHQjT72aPG19QvKB8grnyRbYBNIdHWc2NkCrz65jlU7YrzO6qRp" crossorigin="anonymous"></script>
+		</head>
+		<body>
+			<header>
+				<nav class="primary-nav">
+					<ul>
+						<li>
+							<a hx-replace-url="true" hx-patch="/about" hx-trigger="click" hx-target="#contents">
+								About
+								Me
+							</a>
+						</li>
+						<li>
+							<a hx-replace-url="true" hx-patch="/projects" hx-trigger="click" hx-target="#contents">Projects</a>
+						</li>
+						<li>
+							<a hx-patch="/cv" hx-replace-url="true" hx-trigger="click" hx-target="#contents">CV</a>
+						</li>
+						<li>
+							<a hx-patch="/contact" hx-replace-url="true" hx-trigger="click" hx-target="#contents">Contact</a>
+						</li>
+					</ul>
+				</nav>
+			</header>
+			<div class="primary-content" id="contents">
+				{ children... }
+			</div>
+			<footer>
+				<ul>
+					<li>
+						<a href="https://www.linkedin.com/in/simon-vinding-brodersen/">
+							<img width="24" height="24" src="/static/img/LinkedIn-Logos/LI-In-Bug.png" alt="LinkedIn SVG"/>
+						</a>
+					</li>
+					<li>
+						<a href="https://github.com/svbrodersen">
+							<img width="24" height="24" src="/static/img/github-mark/github-mark-white.png" alt="Github SVG"/>
+						</a>
+					</li>
+				</ul>
+			</footer>
+		</body>
+	</html>
 }

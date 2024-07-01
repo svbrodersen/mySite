@@ -2,25 +2,27 @@ package templates
 
 import "github.com/svbrodersen/mySite/models"
 
-templ ProjectMain(loggedIn bool, projects []models.Project) {
-	<h1>Project</h1>
+templ ProjectListMain(loggedIn bool, projects []models.Project) {
+	<h1>Projects</h1>
 	if loggedIn {
 		<div class="project-form-container">
 			<form hx-post="/projects" hx-swap="innerHTML" hx-target="#contents" enctype="multipart/form-data" action="/projects">
 				<input type="file" name="file"/>
-				<input type="text" name="title"/>
-				<input type="text" name="description"/>
+				<label for="descrip">Description</label>
+				<input id="descrip" type="text" name="description"/>
 				<input type="submit" value="upload"/>
 			</form>
 		</div>
 	}
 	if projects != nil {
-		<ul>
+		<ul class="project-list">
 			for _, item := range projects {
-				<li>
-					<h3>{ item.Title }</h3>
-					<p>{ item.Description }</p>
-				</li>
+				<div class="project-list-container">
+					<li>
+						<h3>{ item.Title }</h3>
+						<p>{ item.Description }</p>
+					</li>
+				</div>
 			}
 		</ul>
 	} else {
@@ -30,12 +32,12 @@ templ ProjectMain(loggedIn bool, projects []models.Project) {
 	}
 }
 
-templ Projects(patch bool, loggedIn bool, projects []models.Project) {
+templ ProjectList(patch bool, loggedIn bool, projects []models.Project) {
 	if patch {
-		@ProjectMain(loggedIn, projects)
+		@ProjectListMain(loggedIn, projects)
 	} else {
 		@BaseLayout() {
-			@ProjectMain(loggedIn, projects)
+			@ProjectListMain(loggedIn, projects)
 		}
 	}
 }
