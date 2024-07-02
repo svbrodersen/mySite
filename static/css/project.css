@@ -1,14 +1,3 @@
-:root {
-    --primary-color: #1E1E2E;
-    --secondary-color: #2D2D44;
-    --accent-color: #BB86FC;
-    --highlight-color: #4CAF50;
-    --background-color: #121212;
-    --surface-color: #1E1E1E;
-    --text-primary-color: #FFFFFF;
-    --text-secondary-color: #B0B0B0;
-}
-
 .project-form-container {
     width: 100%;
     padding-bottom: 40px;
@@ -33,7 +22,7 @@
     cursor: pointer;
     box-shadow: 0 7px 7px var(--accent-color);
     transition-duration: 0.4s;
-    background-color: rgba(55, 55, 55, 0.70)
+    background-color: var(--hover-background);
 }
 
 .project-list-container::before,

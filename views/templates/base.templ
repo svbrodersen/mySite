@@ -47,7 +47,10 @@ templ BaseLayout() {
 					</li>
 					<li>
 						<a href="https://github.com/svbrodersen">
-							<img width="24" height="24" src="/static/img/github-mark/github-mark-white.png" alt="Github SVG"/>
+							<picture>
+								<source srcset="/static/img/github-mark/github-mark-white.png" media="(prefers-color-scheme: dark)"/>
+								<img width="24" height="24" src="/static/img/github-mark/github-mark.png" alt="Github SVG"/>
+							</picture>
 						</a>
 					</li>
 				</ul>
