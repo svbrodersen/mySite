@@ -1,0 +1,18 @@
+package templates
+
+import "github.com/svbrodersen/mySite/models"
+
+templ ProjectDetailMain(patch bool, project *models.Project) {
+	<h1>{ project.Title } </h1>
+	@templ.Raw(project.Content)
+}
+
+templ ProjectDetail(patch bool, project *models.Project) {
+	if patch {
+		@ProjectDetailMain(patch, project)
+	} else {
+		@BaseLayout() {
+			@ProjectDetailMain(patch, project)
+		}
+	}
+}

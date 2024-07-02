@@ -22,11 +22,27 @@
 }
 
 .project-list-container {
-    width: 46%;
+    width: 45%;
     border-radius: 8px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
-    margin: 2%;
+    margin-bottom: 2rem;
+    margin-left: 1rem;
+    margin-right: 1rem;
 }
+
+.project-list-container:hover {
+    cursor: pointer;
+    box-shadow: 0 7px 7px var(--accent-color);
+    transition-duration: 0.4s;
+    background-color: rgba(55, 55, 55, 0.70)
+}
+
+.project-list-container::before,
+::after,
+* {
+    box-sizing: border-box;
+    border: 0 solid #FFFFFF;
+}
+
 
 .project-list-container h3,
 p {

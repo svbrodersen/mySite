@@ -1,4 +1,4 @@
-package utils
+package database
 
 import (
 	"database/sql"
@@ -8,13 +8,17 @@ import (
 	"github.com/svbrodersen/mySite/models"
 )
 
-func GetProjects() []models.Project {
-	db, err := sql.Open("sqlite3", "projects.db")
-	if err != nil {
-		fmt.Printf("Failed open: %s", err)
-		return nil
-	}
+type SqliteAccessor struct {
+	Db *sql.DB
+}
 
+func NewSqliteAccessor() (*SqliteAccessor, error) {
+	db, err := sql.Open("sqlite3", "projects.db")
+	return &SqliteAccessor{db}, err
+}
+
+func (accessor SqliteAccessor) GetProjects() []models.Project {
+	db := accessor.Db
 	rows, err := db.Query("SELECT * FROM projects;")
 	if err != nil {
 		fmt.Printf("Failed query: %s", err)
@@ -45,11 +49,8 @@ func GetProjects() []models.Project {
 	return projects
 }
 
-func SaveProject(project models.Project) (int, error) {
-	db, err := sql.Open("sqlite3", "projects.db")
-	if err != nil {
-		return 0, err
-	}
+func (accessor SqliteAccessor) SaveProject(project models.Project) (int, error) {
+	db := accessor.Db
 
 	res, err := db.Exec("INSERT INTO projects VALUES(NULL, ?, ?, ?, ?);",
 		project.Date,
@@ -67,4 +68,23 @@ func SaveProject(project models.Project) (int, error) {
 		return 0, err
 	}
 	return int(id), nil
+}
+
+func (accessor SqliteAccessor) GetProject(id int) (*models.Project, error) {
+	db := accessor.Db
+	var project models.Project
+	query_string := fmt.Sprintf("SELECT * FROM projects WHERE id=%d;", id)
+	rows, err := db.Query(query_string)
+	if err != nil {
+		return nil, err
+	}
+	rows.Next()
+	err = rows.Scan(
+		&project.Id,
+		&project.Date,
+		&project.Title,
+		&project.Description,
+		&project.Content,
+	)
+	return &project, err
 }
