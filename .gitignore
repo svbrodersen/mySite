@@ -1,1 +1,6 @@
 ./node_modules/
+./tmp/
+./go.mod
+./go.sum
+./package.json
+./package-lock.json
