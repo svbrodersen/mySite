@@ -1,6 +1,7 @@
-./node_modules/
-./tmp/
-./go.mod
-./go.sum
-./package.json
-./package-lock.json
+node_modules
+tmp
+go.mod
+go.sum
+package-lock.json
+package.json
+testEnv.sh
