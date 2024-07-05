@@ -1,0 +1,67 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer components {
+    .nav-item {
+        @apply font-extrabold cursor-pointer p-2 rounded-3xl hover:bg-purple-300 transition-all duration-200 animate-once animate-fade-right;
+    }
+
+    .form-item {
+        @apply flex flex-col text-2xl font-extrabold;
+    }
+
+    .primary-content {
+        @apply animate-fade-right animate-once;
+    }
+
+    label {
+        @apply mb-2 mt-6;
+    }
+
+    ::root {
+        --background-color: #FEFEFA;
+    }
+
+    button[type="submit"] {
+        @apply mt-4 p-2 bg-green-300 hover:bg-purple-300 transition-all duration-200 rounded-lg;
+    }
+
+    body {
+        background-color: var(--background-color);
+    }
+
+    h1,
+    h2,
+    h3,
+    a,
+    p,
+    span {
+        font-family: "Rubik", serif;
+        font-weight: 400;
+        margin: 0px;
+        @apply text-gray-700;
+    }
+
+    h1,
+    h2 {
+        @apply font-extrabold text-gray-700 tracking-wide underline;
+    }
+
+    h1 {
+        @apply text-6xl mb-10 animate-fade-left animate-once;
+    }
+
+    h2 {
+        @apply text-4xl mb-8;
+    }
+
+    h3 {
+        @apply text-2xl text-gray-700 tracking-wide m-2;
+    }
+
+    p {
+        @apply ml-4;
+    }
+
+}

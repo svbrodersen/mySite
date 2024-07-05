@@ -1,56 +1,54 @@
 package templates
 
 import (
-	"fmt"
-	"github.com/svbrodersen/mySite/models"
+"fmt"
+"github.com/svbrodersen/mySite/models"
 )
 
 func projectURL(id int) string {
-	return fmt.Sprintf("/projects/%d", id)
+return fmt.Sprintf("/projects/%d", id)
 }
 
 templ ProjectListMain(loggedIn bool, projects []models.Project) {
-	<h1>Projects</h1>
+<h1>Projects</h1>
+<div class="primary-content">
 	if loggedIn {
-		<div class="project-form-container">
-			<form hx-post="/projects" hx-swap="innerHTML" hx-target="#contents" enctype="multipart/form-data" action="/projects">
-				<input type="file" name="file"/>
-				<label for="descrip">Description</label>
-				<input id="descrip" type="text" name="description"/>
-				<input type="submit" value="upload"/>
-			</form>
-		</div>
+	<div class="project-form-container">
+		<form hx-post="/projects" hx-swap="innerHTML" hx-target="#contents" enctype="multipart/form-data"
+			action="/projects">
+			<input type="file" name="file" />
+			<label for="descrip">Description</label>
+			<input id="descrip" type="text" name="description" />
+			<input type="submit" value="upload" />
+		</form>
+	</div>
 	}
 	if projects != nil {
-		<ul class="project-list">
-			for _, item := range projects {
-				<div
-					class="project-list-container"
-					hx-patch={ projectURL(item.Id) }
-					hx-replace-url="true"
-					hx-swap="innerHTML"
-					hx-target="#contents"
-				>
-					<li>
-						<h3>{ item.Title }</h3>
-						<p>{ item.Description }</p>
-					</li>
-				</div>
-			}
-		</ul>
+	<ul class="project-list">
+		for _, item := range projects {
+		<div class="project-list-container" hx-patch={ projectURL(item.Id) } hx-replace-url="true" hx-swap="innerHTML"
+			hx-target="#contents">
+			<li>
+				<h3>{ item.Title }</h3>
+				<p>{ item.Description }</p>
+			</li>
+		</div>
+		}
+	</ul>
 	} else {
-		<p>
-			Not able to find any projects.
-		</p>
+	<p>
+		Not able to find any projects.
+	</p>
 	}
+</div>
 }
 
 templ ProjectList(patch bool, loggedIn bool, projects []models.Project) {
-	if patch {
-		@ProjectListMain(loggedIn, projects)
-	} else {
-		@BaseLayout() {
-			@ProjectListMain(loggedIn, projects)
-		}
-	}
+if patch {
+@ProjectListMain(loggedIn, projects)
+} else {
+@BaseLayout() {
+@ProjectListMain(loggedIn, projects)
+}
+}
 }

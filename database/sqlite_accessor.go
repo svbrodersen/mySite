@@ -4,26 +4,24 @@ import (
 	"database/sql"
 	"fmt"
 
-	_ "github.com/mattn/go-sqlite3"
 	"github.com/svbrodersen/mySite/models"
+	_ "modernc.org/sqlite"
 )
 
 type SqliteAccessor struct {
-	Db *sql.DB
-}
-
-func NewSqliteAccessor() (*SqliteAccessor, error) {
-	db, err := sql.Open("sqlite3", "projects.db")
-	return &SqliteAccessor{db}, err
 }
 
 func (accessor SqliteAccessor) GetProjects() []models.Project {
-	db := accessor.Db
+	db, err := sql.Open("sqlite", "projects.db")
+	if err != nil {
+		panic("failed to open database")
+	}
 	rows, err := db.Query("SELECT * FROM projects;")
 	if err != nil {
 		fmt.Printf("Failed query: %s", err)
 		return nil
 	}
+	defer db.Close()
 
 	var projects []models.Project
 	for rows.Next() {
@@ -50,7 +48,10 @@ func (accessor SqliteAccessor) GetProjects() []models.Project {
 }
 
 func (accessor SqliteAccessor) SaveProject(project models.Project) (int, error) {
-	db := accessor.Db
+	db, err := sql.Open("sqlite", "projects.db")
+	if err != nil {
+		panic("failed to open database")
+	}
 
 	res, err := db.Exec("INSERT INTO projects VALUES(NULL, ?, ?, ?, ?);",
 		project.Date,
@@ -61,6 +62,7 @@ func (accessor SqliteAccessor) SaveProject(project models.Project) (int, error) 
 	if err != nil {
 		return 0, err
 	}
+	defer db.Close()
 
 	var id int64
 	id, err = res.LastInsertId()
@@ -71,13 +73,17 @@ func (accessor SqliteAccessor) SaveProject(project models.Project) (int, error) 
 }
 
 func (accessor SqliteAccessor) GetProject(id int) (*models.Project, error) {
-	db := accessor.Db
+	db, err := sql.Open("sqlite", "projects.db")
+	if err != nil {
+		panic("failed to open database")
+	}
 	var project models.Project
 	query_string := fmt.Sprintf("SELECT * FROM projects WHERE id=%d;", id)
 	rows, err := db.Query(query_string)
 	if err != nil {
 		return nil, err
 	}
+	defer db.Close()
 	rows.Next()
 	err = rows.Scan(
 		&project.Id,

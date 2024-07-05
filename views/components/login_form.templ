@@ -1,18 +1,18 @@
 package components
 
 templ LoginForm(fail bool) {
-	<div class="form-container" id="login-out-container">
-		if fail {
-			<p>
-				Login failed, please try again.
-			</p>
-		}
-		<form hx-post="/login" hx-swap="outerHTML" hx-target="#login-out-container">
-			<label for="uname"><b>Username</b></label>
-			<input type="text" placeholder="Enter Username" name="uname" required/>
-			<label for="psw"><b>Password</b></label>
-			<input type="password" placeholder="Enter Password" name="psw" required/>
-			<button type="submit">Login</button>
-		</form>
-	</div>
+<div class="w-1/2" id="login-out-container">
+	if fail {
+	<p>
+		Login failed, please try again.
+	</p>
+	}
+	<form class="flex flex-col space-x-2" hx-post="/login" hx-swap="outerHTML" hx-target="#login-out-container">
+		<label for="uname"><b>Username</b></label>
+		<input type="text" placeholder="Enter Username" name="uname" required />
+		<label for="psw"><b>Password</b></label>
+		<input type="password" placeholder="Enter Password" name="psw" required />
+		<button type="submit">Login</button>
+	</form>
+</div>
 }

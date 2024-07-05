@@ -23,7 +23,7 @@ func CvMain() templ.Component {
 			templ_7745c5c3_Var1 = templ.NopComponent
 		}
 		ctx = templ.ClearChildren(ctx)
-		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("<h1>My CV</h1><embed id=\"cv-embed\" src=\"/static/cv.pdf\" width=\"90%\" height=\"85%\">")
+		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("<h1>My CV</h1><embed id=\"cv-embed\" src=\"/static/cv.pdf\" class=\"primary-content h-5/6 w-full\">")
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}

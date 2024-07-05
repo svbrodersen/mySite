@@ -23,7 +23,7 @@ func ContactForm(fail bool) templ.Component {
 			templ_7745c5c3_Var1 = templ.NopComponent
 		}
 		ctx = templ.ClearChildren(ctx)
-		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("<div class=\"form-container\" id=\"contact-container\">")
+		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("<div class=\"flex flex-col items-center justify-center h-5/6\" id=\"contact-container\">")
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
@@ -33,7 +33,7 @@ func ContactForm(fail bool) templ.Component {
 				return templ_7745c5c3_Err
 			}
 		}
-		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("<form hx-post=\"/contact\" hx-swap=\"outerHTML\" hx-target=\"#contact-container\"><label for=\"email\">Email</label> <input id=\"email\" name=\"email\" type=\"text\"> <label for=\"subject\">Subject</label> <input id=\"subject\" name=\"subject\" type=\"text\"> <label for=\"body\">Message</label> <textarea id=\"body\" name=\"body\" type=\"text\"></textarea> <button hx-indicator=\"#indicator\" type=\"submit\"><b>Submit</b></button> <img id=\"indicator\" height=\"24px\" class=\"htmx-indicator\" src=\"/static/img/SVG-Loaders-master/svg-loaders/rings.svg\"></form></div>")
+		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("<form class=\"flex flex-col h-full w-1/2 items-center justify-center\" hx-post=\"/contact\" hx-swap=\"outerHTML\" hx-target=\"#contact-container\"><div class=\"form-item\"><label for=\"email\">Email</label> <input id=\"email\" name=\"email\" type=\"text\"></div><div class=\"form-item\"><label for=\"subject\">Subject</label> <input id=\"subject\" name=\"subject\" type=\"text\"></div><div class=\"h-1/4 form-item\"><label for=\"body\">Message</label> <textarea class=\"h-full\" id=\"body\" name=\"body\" type=\"text\"></textarea></div><button hx-indicator=\"#indicator\" type=\"submit\"><b>Submit</b></button> <img id=\"indicator\" height=\"24px\" class=\"htmx-indicator\" src=\"/static/img/SVG-Loaders-master/svg-loaders/rings.svg\"></form></div>")
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}

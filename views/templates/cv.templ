@@ -1,16 +1,16 @@
 package templates
 
 templ CvMain() {
-	<h1>My CV</h1>
-	<embed id="cv-embed" src="/static/cv.pdf" width="90%" height="85%"/>
+<h1>My CV</h1>
+<embed id="cv-embed" src="/static/cv.pdf" class="primary-content h-5/6 w-full" />
 }
 
 templ Cv(patch bool) {
-	if patch {
-		@CvMain()
-	} else {
-		@BaseLayout() {
-			@CvMain()
-		}
-	}
+if patch {
+@CvMain()
+} else {
+@BaseLayout() {
+@CvMain()
+}
+}
 }

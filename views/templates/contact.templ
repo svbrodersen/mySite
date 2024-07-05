@@ -1,12 +1,12 @@
 package templates
 
-import (
-"github.com/svbrodersen/mySite/views/components"
-)
+import "github.com/svbrodersen/mySite/views/components"
 
 templ ContactMain() {
 <h1>Contact</h1>
-@components.ContactForm(false)
+<div class="primary-content">
+	@components.ContactForm(false)
+</div>
 }
 
 templ Contact(patch bool) {

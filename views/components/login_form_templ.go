@@ -23,7 +23,7 @@ func LoginForm(fail bool) templ.Component {
 			templ_7745c5c3_Var1 = templ.NopComponent
 		}
 		ctx = templ.ClearChildren(ctx)
-		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("<div class=\"form-container\" id=\"login-out-container\">")
+		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("<div class=\"w-1/2\" id=\"login-out-container\">")
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
@@ -33,7 +33,7 @@ func LoginForm(fail bool) templ.Component {
 				return templ_7745c5c3_Err
 			}
 		}
-		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("<form hx-post=\"/login\" hx-swap=\"outerHTML\" hx-target=\"#login-out-container\"><label for=\"uname\"><b>Username</b></label> <input type=\"text\" placeholder=\"Enter Username\" name=\"uname\" required> <label for=\"psw\"><b>Password</b></label> <input type=\"password\" placeholder=\"Enter Password\" name=\"psw\" required> <button type=\"submit\">Login</button></form></div>")
+		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("<form class=\"flex flex-col space-x-2\" hx-post=\"/login\" hx-swap=\"outerHTML\" hx-target=\"#login-out-container\"><label for=\"uname\"><b>Username</b></label> <input type=\"text\" placeholder=\"Enter Username\" name=\"uname\" required> <label for=\"psw\"><b>Password</b></label> <input type=\"password\" placeholder=\"Enter Password\" name=\"psw\" required> <button type=\"submit\">Login</button></form></div>")
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}

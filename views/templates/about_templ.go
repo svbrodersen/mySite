@@ -23,7 +23,7 @@ func MainBody() templ.Component {
 			templ_7745c5c3_Var1 = templ.NopComponent
 		}
 		ctx = templ.ClearChildren(ctx)
-		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("<h1>About me</h1><p>Hi, my name is Simon and i am a master student in Computer Science student at the University of Copenhagen. I finished my Bachelor's degree in Computer Science and Economics in 2024 and decided to move forward with the Computer Science masters. Feel free to take a look at my <a href=\"/projects\">projects</a> page.</p>")
+		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("<h1>About me</h1><p class=\"primary-content\">Hi, my name is Simon and i am a master student in Computer Science student at the University of Copenhagen. I finished my Bachelor's degree in Computer Science and Economics in 2024 and decided to move forward with the Computer Science masters. Feel free to take a look at my <a href=\"/projects\">projects</a> page.</p>")
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}

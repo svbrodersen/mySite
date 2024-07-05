@@ -1,39 +1,42 @@
 package components
 
 templ ContactForm(fail bool) {
-	<div class="form-container" id="contact-container">
-		if fail {
-			<p>
-				An error occured please try again.
-			</p>
-		}
-		<form hx-post="/contact" hx-swap="outerHTML" hx-target="#contact-container">
+<div class="flex flex-col items-center justify-center h-5/6" id="contact-container">
+	if fail {
+	<p>
+		An error occured please try again.
+	</p>
+	}
+	<form class="flex flex-col h-full w-1/2 items-center justify-center" hx-post="/contact" hx-swap="outerHTML"
+		hx-target="#contact-container">
+		<div class="form-item">
 			<label for="email">Email</label>
-			<input id="email" name="email" type="text"/>
+			<input id="email" name="email" type="text" />
+		</div>
+		<div class="form-item">
 			<label for="subject">Subject</label>
-			<input id="subject" name="subject" type="text"/>
+			<input id="subject" name="subject" type="text" />
+		</div>
+		<div class="h-1/4 form-item">
 			<label for="body">Message</label>
-			<textarea id="body" name="body" type="text"></textarea>
-			<button hx-indicator="#indicator" type="submit">
-				<b>Submit</b>
-			</button>
-			<img
-				id="indicator"
-				height="24px"
-				class="htmx-indicator"
-				src="/static/img/SVG-Loaders-master/svg-loaders/rings.svg"
-			/>
-		</form>
-	</div>
+			<textarea class="h-full" id="body" name="body" type="text"></textarea>
+		</div>
+		<button hx-indicator="#indicator" type="submit">
+			<b>Submit</b>
+		</button>
+		<img id="indicator" height="24px" class="htmx-indicator"
+			src="/static/img/SVG-Loaders-master/svg-loaders/rings.svg" />
+	</form>
+</div>
 }
 
 templ ContactComponent(success bool) {
-	if success {
-		<p>
-			Thanks for reaching out!
-			I will get back to you via the email provided!
-		</p>
-	} else {
-		@ContactForm(true)
-	}
+if success {
+<p>
+	Thanks for reaching out!
+	I will get back to you via the email provided!
+</p>
+} else {
+@ContactForm(true)
+}
 }

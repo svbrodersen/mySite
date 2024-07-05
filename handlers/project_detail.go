@@ -10,6 +10,7 @@ import (
 )
 
 func (p *ProjectsDatabase) ProjectDetailHandler(w http.ResponseWriter, r *http.Request) {
+	fmt.Print("Detail Handler")
 	str_split := strings.Split(r.URL.String(), "/")
 	str_id := str_split[len(str_split)-1]
 	id, err := strconv.ParseInt(str_id, 10, 32)

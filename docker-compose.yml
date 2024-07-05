@@ -1,0 +1,4 @@
+services:
+  man:
+    build: .
+    image: europe-west1-docker.pkg.dev/website-428407/mysite/example:v1
