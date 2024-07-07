@@ -8,7 +8,7 @@
     }
 
     .form-item {
-        @apply flex flex-col text-2xl font-extrabold;
+        @apply flex flex-col text-2xl font-extrabold m-4;
     }
 
     .primary-content {
@@ -19,16 +19,12 @@
         @apply mb-2 mt-6;
     }
 
-    ::root {
-        --background-color: #FEFEFA;
-    }
-
     button[type="submit"] {
         @apply mt-4 p-2 bg-green-300 hover:bg-purple-300 transition-all duration-200 rounded-lg;
     }
 
     body {
-        background-color: var(--background-color);
+        @apply bg-[#FEFEFA] dark:bg-zinc-800;
     }
 
     h1,
@@ -36,16 +32,22 @@
     h3,
     a,
     p,
-    span {
+    span,
+    label,
+    code {
         font-family: "Rubik", serif;
         font-weight: 400;
         margin: 0px;
-        @apply text-gray-700;
+        @apply text-gray-700 dark:text-white;
+    }
+
+    input[type="file"] {
+        @apply text-gray-700 dark:text-white;
     }
 
     h1,
     h2 {
-        @apply font-extrabold text-gray-700 tracking-wide underline;
+        @apply font-extrabold tracking-wide underline;
     }
 
     h1 {
@@ -57,11 +59,15 @@
     }
 
     h3 {
-        @apply text-2xl text-gray-700 tracking-wide m-2;
+        @apply text-2xl tracking-wide m-2;
     }
 
     p {
         @apply ml-4;
+    }
+
+    a {
+        @apply text-green-300;
     }
 
 }

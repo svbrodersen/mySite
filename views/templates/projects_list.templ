@@ -19,20 +19,19 @@ templ ProjectListMain(loggedIn bool, projects []models.Project) {
 			<input type="file" name="file" />
 			<label for="descrip">Description</label>
 			<input id="descrip" type="text" name="description" />
-			<input type="submit" value="upload" />
+			<button type="submit">Upload</button>
 		</form>
 	</div>
 	}
 	if projects != nil {
-	<ul class="project-list">
+	<ul class="flex flex-col w-1/2">
 		for _, item := range projects {
-		<div class="project-list-container" hx-patch={ projectURL(item.Id) } hx-replace-url="true" hx-swap="innerHTML"
+		<li class="p-4 m-2 rounded-lg cursor-pointer hover:bg-amber-50 hover:shadow-purple-400
+		hover:shadow-md dark:hover:bg-zinc-700" hx-patch={ projectURL(item.Id) } hx-replace-url="true" hx-swap="innerHTML"
 			hx-target="#contents">
-			<li>
-				<h3>{ item.Title }</h3>
-				<p>{ item.Description }</p>
-			</li>
-		</div>
+			<h3>{ item.Title }</h3>
+			<p>{ item.Description }</p>
+		</li>
 		}
 	</ul>
 	} else {
